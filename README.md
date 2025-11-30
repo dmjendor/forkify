@@ -24,13 +24,7 @@ This project uses a base `View` class that the concrete view classes extend. The
 - `renderMessage(message?)` — show a user-friendly message box in the view.
 - `renderError(message?)` — show an error UI message in the view.
 - `_clear()` — internal helper to clear the view's content.
-
-Notes / gotchas to be aware of:
-
-- Keep method names consistent — the `controller` expects `renderSpinner()` (not `_renderSpinner`) and expects concrete views to expose `render`, `renderError` etc.
-- When mapping over `this._data` to generate repeated preview markup, do not pass an unbound method directly to `.map(...)` because the callback will lose the intended `this` binding. Use arrow functions such as `.map(item => this._generateMarkupPreview(item))` so the callback runs with the correct `this`.
-- When a per-item method needs an item `id`, use the `data` object passed to that callback, not `this._data` (the latter is the entire array), for example `href="#${data.id}`.
-- Keep shared imports (like the `fracty` helper) in the base `View` so children can rely on it — avoid requiring/importing the same helper in multiple views.
+  ind
 
 ## Recent fixes applied
 
@@ -58,14 +52,17 @@ npm start
 npm run build
 ```
 
-## Want improvements?
+## Future Improvement Ideas
 
-If you'd like, I can:
-
-- Add unit tests for view helpers
-- Add a dedicated `docs/` page for the view architecture
-- Add a short CONTRIBUTING guide describing the development flow
-
----
-
-If you'd like me to proceed with inline JSDoc comments for the Views next, say "yes — add JSDoc" and I'll start annotating the view files. Otherwise tell me what you prefer documented next.
+- Display the number of pages between the pagination buttons;
+- bility to sort search results
+- Perform ingredient validation in veiw before submitting the form.
+  -- Change the ingredient input, to be multiple inputs
+  -- Add ability to add more than 6
+- Use AI to import images of recipes from books.
+- Shopping list feature that exports the list of ingredients
+  -- print page, or send email
+- Weekly/Monthly meal planning feature
+  -- weekly/monthly shopping list.
+- Get nutrition data on each ingredient from spponacular API (https://spoonactular.com/food-api)
+  Then display nutrition value, ie calories, etc.
